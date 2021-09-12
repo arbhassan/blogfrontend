@@ -2,7 +2,7 @@ import Head from "next/head";
 import client from "../client";
 import groq from "groq";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const query = groq`
   {
     "posts": *[_type == 'post'],
