@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../public/Artboard-1@0.5x.png";
 
 import { Fragment } from "react";
@@ -40,7 +41,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <a href="/">
+                    <Link href="/">
                       <Image
                         src={logo}
                         alt="Picture of the author"
@@ -48,7 +49,7 @@ export default function Navbar() {
                         height={40}
                         className="block lg:hidden h-8 w-auto"
                       />
-                    </a>
+                    </Link>
 
                     {/* <img
                       className="block lg:hidden h-8 w-auto"
@@ -68,8 +69,6 @@ export default function Navbar() {
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <a
-                          key={item.name}
-                          href={item.href}
                           className={classNames(
                             item.current
                               ? "bg-gray-900 text-white"
@@ -78,7 +77,9 @@ export default function Navbar() {
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
-                          {item.name}
+                          <Link key={item.name} href={item.href}>
+                            {item.name}
+                          </Link>
                         </a>
                       ))}
                     </div>
@@ -91,8 +92,6 @@ export default function Navbar() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
                   <a
-                    key={item.name}
-                    href={item.href}
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
@@ -101,7 +100,9 @@ export default function Navbar() {
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
-                    {item.name}
+                    <Link key={item.name} href={item.href}>
+                      {item.name}
+                    </Link>
                   </a>
                 ))}
               </div>
