@@ -78,9 +78,7 @@ export default function Navbar() {
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
-                          <Link key={item.name} href={item.href}>
-                            {item.name}
-                          </Link>
+                          <Link href={item.href}>{item.name}</Link>
                         </a>
                       ))}
                     </div>
@@ -102,9 +100,7 @@ export default function Navbar() {
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
-                    <Link key={item.name} href={item.href}>
-                      {item.name}
-                    </Link>
+                    <Link href={item.href}>{item.name}</Link>
                   </a>
                 ))}
               </div>
