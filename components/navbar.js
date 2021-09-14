@@ -50,25 +50,11 @@ export default function Navbar() {
                         className="block lg:hidden h-8 w-auto"
                       />
                     </Link>
-
-                    {/* <img
-                      className="block lg:hidden h-8 w-auto"
-                      // src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                      src={logo}
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      // src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-
-                      src={logo}
-                      alt="Workflow"
-                    /> */}
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <div
                           key={item.name}
                           className={classNames(
                             item.current
@@ -79,7 +65,7 @@ export default function Navbar() {
                           aria-current={item.current ? "page" : undefined}
                         >
                           <Link href={item.href}>{item.name}</Link>
-                        </a>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -90,7 +76,7 @@ export default function Navbar() {
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
-                  <a
+                  <div
                     key={item.name}
                     className={classNames(
                       item.current
@@ -101,7 +87,7 @@ export default function Navbar() {
                     aria-current={item.current ? "page" : undefined}
                   >
                     <Link href={item.href}>{item.name}</Link>
-                  </a>
+                  </div>
                 ))}
               </div>
             </Disclosure.Panel>
