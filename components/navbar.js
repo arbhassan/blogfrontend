@@ -7,13 +7,13 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
-  { name: "Calendar", href: "/calendar", current: false },
-  { name: "Contact", href: "/contact", current: false },
-  { name: "Documents", href: "/documents", current: false },
-  { name: "Gallery", href: "/gallery", current: false },
-  { name: "News", href: "/news", current: false },
-  { name: "101 Anniversary", href: "/101anniversary", current: false },
+  { key: 1, name: "Home", href: "/", current: false },
+  { key: 2, name: "Calendar", href: "/calendar", current: false },
+  { key: 3, name: "Contact", href: "/contact", current: false },
+  { key: 4, name: "Documents", href: "/documents", current: false },
+  { key: 5, name: "Gallery", href: "/gallery", current: false },
+  { key: 6, name: "News", href: "/news", current: false },
+  { key: 7, name: "101 Anniversary", href: "/101anniversary", current: false },
 ];
 
 function classNames(...classes) {
@@ -69,6 +69,7 @@ export default function Navbar() {
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <a
+                          key={item.name}
                           className={classNames(
                             item.current
                               ? "bg-gray-900 text-white"
