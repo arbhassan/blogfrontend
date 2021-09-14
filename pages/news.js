@@ -31,10 +31,7 @@ export default function Home({ posts, home }) {
   return (
     <div className="bg-gray-300">
       <Head>
-        <title>
-          Home | A Proud Member of the Agricultural Producers Association of
-          Saskatchewan (APAS)
-        </title>
+        <title>Blog | RM of Willowdale No. 153</title>
       </Head>
       <div className="max-w-screen-2xl mx-auto bg-white">
         <Hero home={home} />
