@@ -7,7 +7,7 @@ import Posts from "../components/Posts";
 export async function getStaticProps() {
   const query = groq`
   {
-    "posts": *[_type == 'post']{...,
+    "posts": *[_type == 'post'  ] | order(publishedAt desc){...,
       'categories': categories[]->title,
       'authorName': author->name,
       'authorSlug': author-> slug,

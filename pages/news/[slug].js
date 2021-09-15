@@ -69,7 +69,7 @@ export default function SinglePost({ post }) {
           </h1>
           <div className="flex space-x-5 text-sm text-gray-500">
             <span className="text-blue-500 block pb-4">{post.author}</span>
-            <span>{new Date(post._createdAt).toDateString()}</span>
+            <span>{new Date(post.publishedAt).toDateString()}</span>
           </div>
           <Image width={900} height={1000} src={urlFor(post.mainImage).url()} />
           <div className="prose max-w-2xl">
