@@ -16,7 +16,6 @@ function urlFor(source) {
 export function getStaticPaths() {
   return {
     paths: [
-      "/news/first-post",
       "/news/complete-fire-ban-as-of-midnight-04nov2020",
       "/news/abandonment-of-poll-by-election",
       "/news/call-for-nomination-for-by-election",
