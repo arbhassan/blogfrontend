@@ -4,7 +4,7 @@ import groq from "groq";
 import Hero from "../components/Hero";
 import Posts from "../components/Posts";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const query = groq`
   {
     "posts": *[_type == 'post'  ] | order(publishedAt desc){...,
@@ -13,7 +13,9 @@ export async function getStaticProps() {
       'authorSlug': author-> slug,
 
     },
-    "home": *[_type == 'homepage']
+    "home": *[_type == 'homepage'],
+    "footer": *[_type == 'footer'],
+    "navbar": *[_type == 'navbar']
   }
   `;
 
@@ -23,11 +25,13 @@ export async function getStaticProps() {
     props: {
       posts: data.posts,
       home: data.home[0],
+      footer: data.footer,
+      navbar: data.navbar,
     },
   };
 }
 
-export default function Home({ posts, home }) {
+export default function Home({ footer, posts, home }) {
   return (
     <div className="bg-gray-300">
       <Head>

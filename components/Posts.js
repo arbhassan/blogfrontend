@@ -1,5 +1,6 @@
 import Link from "next/link";
-export default function Posts({ posts }) {
+
+export default function Posts({ posts, navbar }) {
   return (
     <div className="flex flex-col md:pl-14">
       {posts &&

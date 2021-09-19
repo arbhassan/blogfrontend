@@ -1,4 +1,37 @@
 import Head from "next/head";
+
+import client from "../client";
+import groq from "groq";
+
+export async function getStaticProps() {
+  const query = groq`
+  {
+    "posts": *[_type == 'post']{...,
+      'categories': categories[]->title,
+      'authorName': author->name,
+      'authorSlug': author-> slug,
+
+    },
+    "home": *[_type == 'homepage'],
+
+    "navbar": *[_type == 'navbar'],
+
+    "footer": *[_type == 'footer'],
+  }
+  `;
+
+  const data = await client.fetch(query);
+
+  return {
+    props: {
+      posts: data.posts,
+      home: data.home[0],
+      footer: data.footer,
+      navbar: data.navbar,
+    },
+  };
+}
+
 function Calendar() {
   return (
     <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">

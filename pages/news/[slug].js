@@ -24,27 +24,34 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   const query = groq`
-    *[_type == 'post' && slug.current == '${slug}'][0]{
+  { 
+    "post": *[_type == 'post' && slug.current == '${slug}'][0]{
         ...,
         'author': author->name
-    }
+    },
+    "navbar": *[_type == 'navbar'],
+    "footer": *[_type == 'footer'],
     
+  }  
   `;
 
   const data = await client.fetch(query);
 
   return {
-    revalidate: 60 * 60 * 24,
+    // revalidate: 60 * 60 * 24,
     props: {
-      post: data,
+      post: data.post,
+      navbar: data.navbar,
+      footer: data.footer,
     },
   };
 }
 
-export default function SinglePost({ post }) {
+export default function SinglePost({ post, navbar, footer }) {
   const router = useRouter();
 
-  console.log(post);
+  // console.log(post);
+  // console.log(navbar);
 
   if (router.isFallback) {
     return <h1>Loading....</h1>;
