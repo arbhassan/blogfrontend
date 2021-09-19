@@ -54,7 +54,6 @@ export async function getServerSideProps() {
 
 function Documents({ documents }) {
   let docs = documents;
-  console.log(docs);
   return (
     <div>
       <Head>

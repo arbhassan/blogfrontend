@@ -15,8 +15,33 @@ function urlFor(source) {
 
 export function getStaticPaths() {
   return {
-    paths: [],
-    fallback: true,
+    paths: [
+      "/news/first-post",
+      "/news/complete-fire-ban-as-of-midnight-04nov2020",
+      "/news/abandonment-of-poll-by-election",
+      "/news/call-for-nomination-for-by-election",
+      "/news/abandonment-of-poll",
+      "/news/congratulations-to-paige-pranke",
+      "/news/stray-animal-restrained",
+      "/news/office-closure17-21aug2020",
+      "/news/office-closure",
+      "/news/stray-animal-restrained123",
+      "/news/new-office-hours",
+      "/news/office-closure1",
+      "/news/office-closed-for-administrative-holidays-22-28th-of-july-2019",
+      "/news/complete-fire-ban-has-been-lifted",
+      "/news/fire-advisory-notice",
+      "/news/the-rm-of-willowdale-no-153-would-like-to-congratulate-mr-richard-shellenberg-on-his-election-as",
+      "/news/the-rm-of-willowdale-would-like-to-invite-ratepayers-to-take-part-in-this-free-webinar-series",
+      "/news/internship",
+      "/news/office-closure2131",
+      "/news/insect-pest-surveys-in-crops",
+      "/news/road-restrictions-being-removed",
+      "/news/boundary-changes-updated",
+      "/news/interactive-online-safety-training-program",
+      "/news/rcmp-non-emergency-reporting-line",
+    ],
+    fallback: false,
   };
 }
 

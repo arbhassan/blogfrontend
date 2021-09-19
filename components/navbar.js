@@ -31,7 +31,6 @@ function classNames(...classes) {
 
 export default function Navbar({ navbar }) {
   let navigation = navbar[0].navbar.names;
-  console.log(navbar[0].logo);
   return (
     <div>
       <Disclosure as="nav" className="bg-gray-800">
