@@ -71,7 +71,7 @@ function Contact({ contact }) {
               <div className=" bg-white rounded-lg shadow">
                 <ul className="divide-y-2 divide-gray-100">
                   {officehours.map((item) => (
-                    <li className="p-3">
+                    <li className="p-3" key={item}>
                       {item}
                       <br />
                     </li>

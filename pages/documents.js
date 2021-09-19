@@ -70,7 +70,12 @@ function Documents({ documents }) {
               <div className=" bg-white rounded-lg shadow">
                 <ul className="divide-y-2 divide-gray-100">
                   {docs.map((item) => (
-                    <a href={item.URL.asset.url} target="_blank" key={item._id}>
+                    <a
+                      href={item.URL.asset.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      key={item._id}
+                    >
                       <li className="p-3">{item.title}</li>
                     </a>
                   ))}
