@@ -69,7 +69,7 @@ function Documents({ folder }) {
 
       <div>
         {folder.map((item) => (
-          <section className="text-gray-600 body-font">
+          <section className="text-gray-600 body-font" key={item.title}>
             <div className="container px-5 py-2 mx-auto">
               <div className="flex flex-col text-center w-full mb-0 ">
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-10 text-gray-900">
