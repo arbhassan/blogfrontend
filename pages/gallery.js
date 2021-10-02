@@ -18,6 +18,17 @@ export async function getServerSideProps() {
     "navbar": *[_type == 'navbar'],
 
     "footer": *[_type == 'footer'],
+
+    "author": *[_type == 'author']{
+        name,
+        "relatedPosts": *[_type=='post' && references(^._id)]{ ... }
+      },
+
+      
+    
+
+    
+
   }
   `;
 
@@ -29,6 +40,7 @@ export async function getServerSideProps() {
       home: data.home[0],
       footer: data.footer,
       navbar: data.navbar,
+      author: data.author,
     },
   };
 }
