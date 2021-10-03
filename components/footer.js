@@ -36,10 +36,10 @@ export default function Footer({ footer }) {
               <div className="md:grid md:grid-cols-2 md:gap-8">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                    Local Links
+                    {locallinks[0].name}
                   </h3>
                   <ul role="list" className="mt-4 space-y-4">
-                    {locallinks.map((item) => (
+                    {locallinks.slice(1).map((item) => (
                       <li key={item.name}>
                         <a
                           href={item.url}
@@ -53,10 +53,10 @@ export default function Footer({ footer }) {
                 </div>
                 <div className="mt-12 md:mt-0">
                   <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                    Office Information
+                    {officeinfo[0]}
                   </h3>
                   <ul role="list" className="mt-4 space-y-4">
-                    {officeinfo.map((item) => (
+                    {officeinfo.slice(1).map((item) => (
                       <li key={item}>
                         <a className="text-base text-gray-300 hover:text-white">
                           {item}
