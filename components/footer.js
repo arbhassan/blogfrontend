@@ -18,53 +18,44 @@
 // ];
 
 export default function Footer({ footer }) {
-  let locallinks = footer[0].locallinks.names;
-  let officeinfo = footer[0].officeinfo;
-  // console.log(officeinfo);
   return (
     <div>
-      {/* {officeinfo1.map((item) => (
-        <p>{item.name}</p>
-      ))} */}
       <footer className="bg-gray-800" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
+
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="grid grid-cols-2 gap-8 xl:col-span-2">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                    {locallinks[0].name}
-                  </h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {locallinks.slice(1).map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.url}
-                          className="text-base text-gray-300 hover:text-white"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                    {officeinfo[0]}
-                  </h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {officeinfo.slice(1).map((item) => (
-                      <li key={item}>
-                        <a className="text-base text-gray-300 hover:text-white">
-                          {item}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="grid grid-cols-1 gap-8 xl:col-span-2">
+              <div className="md:grid md:grid-cols-6 md:gap-52">
+                {footer.map((item) => (
+                  <div>
+                    <div>
+                      {item.locallinks.names.slice(0, 1).map((step) => (
+                        <div className="mt-12 md:mt-0">
+                          <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase whitespace-nowrap">
+                            {step.name}
+                          </h3>
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      {item.locallinks.names.slice(1).map((step) => (
+                        <ul role="list" className="mt-4 space-y-4">
+                          <li key={step.name}>
+                            <a
+                              href={step.url}
+                              className="text-base text-gray-300 hover:text-white whitespace-pre"
+                            >
+                              {step.name}
+                            </a>
+                          </li>
+                        </ul>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
