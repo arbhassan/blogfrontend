@@ -30,19 +30,26 @@ export default function Footer({ footer }) {
             <div className="grid grid-cols-1 gap-8 xl:col-span-2">
               <div className="md:grid md:grid-cols-6 md:gap-52">
                 {footer.map((item) => (
-                  <div>
-                    <div>
+                  <div key={item.locallinks.names.name}>
+                    <div key={item.locallinks.names.name}>
                       {item.locallinks.names.slice(0, 1).map((step) => (
-                        <div className="mt-12 md:mt-0">
-                          <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase whitespace-nowrap">
+                        <div className="mt-12 md:mt-0" key={step.name}>
+                          <h3
+                            className="text-sm font-semibold text-gray-400 tracking-wider uppercase whitespace-nowrap"
+                            key={step.name}
+                          >
                             {step.name}
                           </h3>
                         </div>
                       ))}
                     </div>
-                    <div>
+                    <div key={item.locallinks.names.name}>
                       {item.locallinks.names.slice(1).map((step) => (
-                        <ul role="list" className="mt-4 space-y-4">
+                        <ul
+                          role="list"
+                          className="mt-4 space-y-4"
+                          key={step.name}
+                        >
                           <li key={step.name}>
                             <a
                               href={step.url}
