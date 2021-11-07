@@ -1,9 +1,20 @@
 import Head from "next/head";
 import Link from "next/link";
-import client from "../client";
+import client from "../../client";
 import groq from "groq";
 
-export async function getServerSideProps() {
+import BlockContent from "@sanity/block-content-to-react";
+
+export const getServerSideProps = async (pageContext) => {
+  const privatefolderSlug = pageContext.query.slug;
+  console.log(privatefolderSlug);
+
+  if (!privatefolderSlug) {
+    return {
+      notFound: true,
+    };
+  }
+
   const query = groq`
   {
     "posts": *[_type == 'post']{...,
@@ -18,17 +29,14 @@ export async function getServerSideProps() {
 
     "footer": *[_type == 'footer'],
     "contact": *[_type == 'contact'],
-    "privatedocument": *[_type == 'privatedocument']{ 
-        _id,
-        title,
-        "URL": document{asset->{path,url}}},
-    "privatefolder": *[_type == 'privatefolder'] | order(title){
-        ...,
+    "privatefolder": *[_type == 'privatefolder' && slug.current == "${privatefolderSlug}"]{...,
         "relatedDocuments": *[_type=='privatedocument' && references(^._id)]{ _id,
           title,
           "URL": document{asset->{path,url} }
       },
-    }
+
+      }
+
   }
   `;
 
@@ -41,13 +49,12 @@ export async function getServerSideProps() {
       footer: data.footer,
       navbar: data.navbar,
       contact: data.contact,
-      privatedocument: data.privatedocument,
       privatefolder: data.privatefolder,
     },
   };
-}
+};
 
-function Secret({ privatefolder, privatedocument }) {
+export default function Page({ privatefolder }) {
   console.log(privatefolder);
   return (
     <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
@@ -65,14 +72,14 @@ function Secret({ privatefolder, privatedocument }) {
               className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
             >
               <div className="flex-shrink-0">
-                <img src="https://img.icons8.com/ios/50/000000/folder-invoices--v1.png" />
+                <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-file-multimedia-kiranshastry-lineal-kiranshastry-2.png" />
               </div>
               <div className="flex-1 min-w-0">
-                <Link href={`privatefolder/${item.slug.current}`}>
+                <Link href={item.relatedDocuments[0].URL.asset.url}>
                   <a className="focus:outline-none">
                     <span className="absolute inset-0" aria-hidden="true" />
                     <p className="text-lg font-medium text-gray-900">
-                      {item.title}
+                      {item.relatedDocuments[0].title}
                     </p>
                   </a>
                 </Link>
@@ -84,5 +91,3 @@ function Secret({ privatefolder, privatedocument }) {
     </div>
   );
 }
-
-export default Secret;
