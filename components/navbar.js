@@ -58,7 +58,9 @@ export default function Navbar({ navbar }) {
                         width={120}
                         height={40}
                         className="block lg:hidden h-8 w-auto"
-                        src={urlFor(navbar[0].logo.asset).url()}
+                        src={
+                          "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png"
+                        }
                       />
                     </Link>
                   </div>

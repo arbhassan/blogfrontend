@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["cdn.sanity.io"],
+    domains: ["cdn.sanity.io", "upload.wikimedia.org"],
   },
 
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
