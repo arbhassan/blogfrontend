@@ -5,7 +5,6 @@ import groq from "groq";
 
 export const getServerSideProps = async (pageContext) => {
   const folderSlug = pageContext.query.slug;
-  console.log(folderSlug);
 
   if (!folderSlug) {
     return {
@@ -23,7 +22,7 @@ export const getServerSideProps = async (pageContext) => {
     },
     "home": *[_type == 'homepage'],
 
-    "navbar": *[_type == 'navbar'],
+    "navbar": *[_type == 'navbar'] | order(order asc),
 
     "footer": *[_type == 'footer'],
     "contact": *[_type == 'contact'],
@@ -53,7 +52,15 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 export default function Folder({ folder }) {
-  console.log(folder);
+  if (folder[0].relatedDocuments == 0) {
+    return (
+      <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+        <p className="text-lg font-medium text-gray-900">
+          No documents found. Please add documents to this folder
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
       <Head>

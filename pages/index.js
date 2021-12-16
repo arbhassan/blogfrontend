@@ -15,7 +15,7 @@ export async function getServerSideProps() {
     },
     "home": *[_type == 'homepage'],
     "footer": *[_type == 'footer'],
-    "navbar": *[_type == 'navbar']
+    "navbar": *[_type == 'navbar'] | order(order asc)
   }
   `;
 

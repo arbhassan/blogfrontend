@@ -30,7 +30,17 @@ function classNames(...classes) {
 }
 
 export default function Navbar({ navbar }) {
-  let navigation = navbar[0].navbar.names;
+  let navigation = navbar;
+  // navigation.map((item) => console.log(item.Item.name));
+
+  if (navbar == 0) {
+    return (
+      <div>
+        <p>No items found in the Navigation Bar. Please add some items to it</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Disclosure as="nav" className="bg-gray-800">
@@ -51,7 +61,7 @@ export default function Navbar({ navbar }) {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <Link href="/">
+                    <a href="/">
                       <Image
                         // src={logo}
                         alt="Picture of the author"
@@ -62,13 +72,13 @@ export default function Navbar({ navbar }) {
                           "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png"
                         }
                       />
-                    </Link>
+                    </a>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <div
-                          key={item._key}
+                          key={item.Item.name}
                           className={classNames(
                             item.current
                               ? "bg-gray-900 text-white"
@@ -77,7 +87,9 @@ export default function Navbar({ navbar }) {
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
-                          <Link href={item.url}>{item.name}</Link>
+                          <Link key={item.Item.name} href={item.Item.url}>
+                            {item.Item.name}
+                          </Link>
                         </div>
                       ))}
                     </div>
@@ -90,7 +102,7 @@ export default function Navbar({ navbar }) {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
                   <div
-                    key={item._key}
+                    key={item.Item.name}
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
@@ -99,7 +111,9 @@ export default function Navbar({ navbar }) {
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
-                    <Link href={item.url}>{item.name}</Link>
+                    <Link key={item.Item.url} href={item.Item.url}>
+                      {item.Item.name}
+                    </Link>
                   </div>
                 ))}
               </div>

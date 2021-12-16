@@ -19,7 +19,7 @@ export async function getServerSideProps() {
     },
     "home": *[_type == 'homepage'],
 
-    "navbar": *[_type == 'navbar'],
+    "navbar": *[_type == 'navbar'] | order(order asc),
 
     "footer": *[_type == 'footer'],
     "contact": *[_type == 'contact'],

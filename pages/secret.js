@@ -14,7 +14,7 @@ export async function getServerSideProps() {
     },
     "home": *[_type == 'homepage'],
 
-    "navbar": *[_type == 'navbar'],
+    "navbar": *[_type == 'navbar'] | order(order asc),
 
     "footer": *[_type == 'footer'],
     "contact": *[_type == 'contact'],
@@ -48,7 +48,16 @@ export async function getServerSideProps() {
 }
 
 function Secret({ privatefolder, privatedocument }) {
-  console.log(privatefolder);
+  if (privatefolder == 0) {
+    return (
+      <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+        <p className="text-lg font-medium text-gray-900">
+          No Folders found. Please add folders to this page
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
       <Head>

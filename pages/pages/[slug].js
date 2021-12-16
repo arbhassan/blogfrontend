@@ -24,7 +24,7 @@ export const getServerSideProps = async (pageContext) => {
     },
     "home": *[_type == 'homepage'],
 
-    "navbar": *[_type == 'navbar'],
+    "navbar": *[_type == 'navbar'] | order(order asc),
 
     "footer": *[_type == 'footer'],
     "contact": *[_type == 'contact'],
@@ -55,7 +55,6 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 export default function Page({ page }) {
-  console.log(page);
   return (
     <div>
       <Head>
