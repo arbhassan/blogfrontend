@@ -61,7 +61,7 @@ export default function Navbar({ navbar }) {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <a href="/">
+                    <Link href="/">
                       <Image
                         // src={logo}
                         alt="Picture of the author"
@@ -72,7 +72,7 @@ export default function Navbar({ navbar }) {
                           "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png"
                         }
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
