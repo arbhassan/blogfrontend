@@ -1,3 +1,4 @@
+import withAuth from "../../components/withAuth";
 import Head from "next/head";
 import Link from "next/link";
 import client from "../../client";
@@ -54,7 +55,7 @@ export const getServerSideProps = async (pageContext) => {
   };
 };
 
-export default function Page({ privatefolder }) {
+function Page({ privatefolder }) {
   if (privatefolder[0].relatedDocuments == 0) {
     return (
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
@@ -99,3 +100,5 @@ export default function Page({ privatefolder }) {
     </div>
   );
 }
+
+export default withAuth(Page);

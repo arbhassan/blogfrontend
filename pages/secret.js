@@ -1,3 +1,4 @@
+import withAuth from "../components/withAuth";
 import Head from "next/head";
 import Link from "next/link";
 import client from "../client";
@@ -94,4 +95,4 @@ function Secret({ privatefolder, privatedocument }) {
   );
 }
 
-export default Secret;
+export default withAuth(Secret);

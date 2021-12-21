@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 
 import Head from "next/head";
 
@@ -49,9 +49,16 @@ function Auth({ password1 }) {
 
   function handleSubmit(event) {
     if (password == password1[0].password) {
-      router.push("/secret");
+      let accessToken1 = [];
+
+      let password = password1[0].password;
+
+      accessToken1.push(password);
+
+      localStorage.setItem("accessToken1", JSON.stringify(password));
 
       event.preventDefault();
+      router.replace("/secret");
     } else {
       event.preventDefault();
       return <p>Wrong password</p>;
