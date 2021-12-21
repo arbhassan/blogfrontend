@@ -56,6 +56,7 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 function Page({ privatefolder }) {
+  console.log(privatefolder);
   if (privatefolder[0].relatedDocuments == 0) {
     return (
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
@@ -75,7 +76,7 @@ function Page({ privatefolder }) {
 
       <div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {privatefolder.map((item) => (
+          {privatefolder[0].relatedDocuments.map((item) => (
             <div
               key={item.title}
               className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
@@ -84,11 +85,11 @@ function Page({ privatefolder }) {
                 <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-file-multimedia-kiranshastry-lineal-kiranshastry-2.png" />
               </div>
               <div className="flex-1 min-w-0">
-                <Link href={item.relatedDocuments[0].URL.asset.url}>
+                <Link href={item.URL.asset.url}>
                   <a className="focus:outline-none">
                     <span className="absolute inset-0" aria-hidden="true" />
                     <p className="text-lg font-medium text-gray-900">
-                      {item.relatedDocuments[0].title}
+                      {item.title}
                     </p>
                   </a>
                 </Link>
