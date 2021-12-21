@@ -28,7 +28,6 @@ export default function Posts({ posts, navbar }) {
               </a>
             </Link>
             <span className="text-gray-500 text-sm">
-              By <span className="text-blue-500">{post.authorName}</span> on{" "}
               {new Date(post.publishedAt).toDateString()}
             </span>
           </div>
