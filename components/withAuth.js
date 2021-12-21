@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 const withAuth = (WrappedComponent) => {
   return function Auths(props) {
     // checks whether we are on client / browser or server.
-    if (typeof window !== "undefined") {
-      const Router = useRouter();
 
+    const Router = useRouter();
+    if (typeof window !== "undefined") {
       //  let accessToken1 = [];
 
       //   let student1 = "Hello";
