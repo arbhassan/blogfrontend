@@ -6,7 +6,7 @@ import groq from "groq";
 
 export async function getServerSideProps() {
   const query = groq`
-   "footer": *[_type == 'footer'],
+   "footer": *[_type == 'footer'] | order(order asc),
    "navbar": *[_type == 'navbar'] | order(order asc) 
   `;
 

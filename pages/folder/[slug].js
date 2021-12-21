@@ -24,7 +24,7 @@ export const getServerSideProps = async (pageContext) => {
 
     "navbar": *[_type == 'navbar'] | order(order asc),
 
-    "footer": *[_type == 'footer'],
+    "footer": *[_type == 'footer'] | order(order asc),
     "contact": *[_type == 'contact'],
     "folder": *[_type == 'folder' && slug.current == "${folderSlug}"]{...,
         "relatedDocuments": *[_type=='documents' && references(^._id)]{ _id,

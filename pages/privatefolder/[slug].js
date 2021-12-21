@@ -28,7 +28,7 @@ export const getServerSideProps = async (pageContext) => {
 
     "navbar": *[_type == 'navbar'] | order(order asc),
 
-    "footer": *[_type == 'footer'],
+    "footer": *[_type == 'footer'] | order(order asc),
     "contact": *[_type == 'contact'],
     "privatefolder": *[_type == 'privatefolder' && slug.current == "${privatefolderSlug}"]{...,
         "relatedDocuments": *[_type=='privatedocument' && references(^._id)]{ _id,

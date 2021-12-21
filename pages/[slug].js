@@ -1,12 +1,11 @@
 import Head from "next/head";
-import client from "../../client";
+import client from "../client";
 import groq from "groq";
 
 import BlockContent from "@sanity/block-content-to-react";
 
 export const getServerSideProps = async (pageContext) => {
   const pageSlug = pageContext.query.slug;
-  console.log(pageSlug);
 
   if (!pageSlug) {
     return {
@@ -26,7 +25,7 @@ export const getServerSideProps = async (pageContext) => {
 
     "navbar": *[_type == 'navbar'] | order(order asc),
 
-    "footer": *[_type == 'footer'],
+    "footer": *[_type == 'footer'] | order(order asc),
     "contact": *[_type == 'contact'],
     "page": *[_type == 'page' && slug.current == "${pageSlug}"]{...,
       content[]{

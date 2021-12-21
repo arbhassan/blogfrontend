@@ -23,7 +23,7 @@ export async function getServerSideProps({ params }) {
         'author': author->name
     },
     "navbar": *[_type == 'navbar'] | order(order asc),
-    "footer": *[_type == 'footer'],
+    "footer": *[_type == 'footer'] | order(order asc),
     
   }  
   `;

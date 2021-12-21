@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 
     "navbar": *[_type == 'navbar'] | order(order asc),
 
-    "footer": *[_type == 'footer'],
+    "footer": *[_type == 'footer'] | order(order asc),
     "contact": *[_type == 'contact'],
     "password": *[_type == 'password'],
 
