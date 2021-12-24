@@ -44,6 +44,7 @@ export async function getServerSideProps() {
 
 function Auth({ password1 }) {
   const [password, setPassword] = useState("");
+  const [wrongPassword, setWrongPassword] = useState("");
 
   const router = useRouter();
 
@@ -55,13 +56,17 @@ function Auth({ password1 }) {
 
       accessToken1.push(password);
 
-      localStorage.setItem("accessToken1", JSON.stringify(password));
+      localStorage.setItem("accessToken1", password);
 
       event.preventDefault();
-      router.replace("/secret");
+      if (window.history.length > 1) {
+        router.back();
+      } else {
+        router.replace("/");
+      }
     } else {
       event.preventDefault();
-      return <p>Wrong password</p>;
+      return alert("Wrong password");
     }
   }
 

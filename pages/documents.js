@@ -25,7 +25,7 @@ export async function getServerSideProps() {
 
     "footer": *[_type == 'footer'] | order(order asc),
 
-    "documents": *[_type == 'documents']
+    "privatedocument": *[_type == 'privatedocument']
     { 
       _id,
       title,
@@ -33,9 +33,9 @@ export async function getServerSideProps() {
       
       },
     },
-    "folder": *[_type == 'folder'] | order(title){
+    "privatefolder": *[_type == 'privatefolder' && private == false] | order(title){
         ...,
-        "relatedDocuments": *[_type=='documents' && references(^._id)]{ _id,
+        "relatedDocuments": *[_type=='privatedocument' && references(^._id)]{ _id,
           title,
           "URL": document{asset->{path,url} }
       },
@@ -54,14 +54,16 @@ export async function getServerSideProps() {
       home: data.home[0],
       footer: data.footer,
       navbar: data.navbar,
-      documents: data.documents,
-      folder: data.folder,
+      privatedocument: data.privatedocument,
+      privatefolder: data.privatefolder,
     },
   };
 }
 
-function Documents({ folder }) {
-  if (folder == 0) {
+function Documents({ privatefolder, privatedocument }) {
+  console.log(privatefolder);
+  console.log(privatedocument);
+  if (privatefolder == 0) {
     return (
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
         <p className="text-lg font-medium text-gray-900">
@@ -81,7 +83,7 @@ function Documents({ folder }) {
 
       <div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {folder.map((item) => (
+          {privatefolder.map((item) => (
             <div
               key={item.title}
               className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
