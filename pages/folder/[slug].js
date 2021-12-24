@@ -51,7 +51,6 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 export default function Folder({ privatefolder }) {
-  console.log(privatefolder);
   if (privatefolder[0].relatedDocuments == 0) {
     return (
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
