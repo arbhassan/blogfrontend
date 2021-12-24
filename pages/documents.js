@@ -61,8 +61,6 @@ export async function getServerSideProps() {
 }
 
 function Documents({ privatefolder, privatedocument }) {
-  console.log(privatefolder);
-  console.log(privatedocument);
   if (privatefolder == 0) {
     return (
       <div className="py-16 xl:py-36 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">

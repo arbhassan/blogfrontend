@@ -54,7 +54,6 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 export default function Page({ page }) {
-  console.log(page[0].title);
   return (
     <div>
       <Head>
